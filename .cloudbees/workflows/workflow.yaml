@@ -1,0 +1,17 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: demo-app-workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    steps:
+      - uses: docker://alpine:3.20
+        run: |
+          echo "building..."
+  
+  deploy:
+    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@main
+  
