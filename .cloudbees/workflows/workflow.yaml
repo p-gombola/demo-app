@@ -13,5 +13,5 @@ jobs:
           echo "building..."
   
   deploy:
-    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@main
+    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@v1
   
