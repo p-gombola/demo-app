@@ -14,5 +14,5 @@ jobs:
   
   deploy:
     needs: [build]
-    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@v1
+    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@main
   
