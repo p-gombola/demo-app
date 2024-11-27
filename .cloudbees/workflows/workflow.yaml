@@ -14,5 +14,7 @@ jobs:
   
   deploy:
     needs: [build]
+    secrets:
+      deploy_pwd: ${{secrets.superSecretPassword}}
     uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@main
   
