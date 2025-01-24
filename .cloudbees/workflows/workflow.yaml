@@ -6,17 +6,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    steps:
-      - uses: docker://alpine:3.20
-        run: |
-          echo "building..."
-  
   deploy:
-    needs: [build]
-    with:
-      username: elroy
-    secrets:
-      deploy_pwd: ${{secrets.superSecretPassword}}
     uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@main
   
