@@ -17,4 +17,5 @@ jobs:
     if: ${{ deploy.outputs.deploy-result == 'pass' }}
     steps:
       - name: Deploy status
+        uses: docker://alpine:3.20
         run: echo "success"
