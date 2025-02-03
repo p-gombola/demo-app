@@ -5,7 +5,17 @@ name: demo-app-workflow
 on:
   workflow_dispatch:
 
-jobs:
+jobs: 
   deploy:
-    uses: https://github.com/p-gombola/shared/.cloudbees/workflows/deploy.yaml@main
-  
+    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@main
+    with:
+      config-path: ./config/demo-app
+    secrets:
+      access-token: ${{ secrets.token }}
+  pass:
+    needs: [deploy]
+    if: ${{ deploy.outputs.deploy-result == 'pass' }}
+    steps:
+      - name: Deploy status
+        uses: alpine:3.20
+        run: echo "success"
