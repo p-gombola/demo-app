@@ -7,7 +7,7 @@ on:
 
 jobs: 
   deploy:
-    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@main
+    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@v2
     with:
       config-path: ./config/demo-app
     secrets:
