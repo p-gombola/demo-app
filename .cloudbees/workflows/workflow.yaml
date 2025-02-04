@@ -19,4 +19,12 @@ jobs:
     steps:
       - name: Pass
         uses: docker://alpine:3.21
-        run: echo "Yay!"
+        run: echo "Deploy success alert"
+
+  fail:
+    needs: [deploy]
+    if: needs.deploy.outputs.deploy-result == 'fail'
+    steps:
+      - name: Handle deploy failure
+        uses: docker://alpine:3.21
+        run: echo "Deploy failure alert"
