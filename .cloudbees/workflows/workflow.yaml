@@ -12,3 +12,11 @@ jobs:
       config-path: ./config/demo-app
     secrets:
       access-token: ${{ secrets.token }}
+  
+  pass:
+    needs: [deploy]
+    if: needs.deploy.outputs.deploy-result == 'pass'
+    steps:
+      - name: Pass
+        uses: docker://alpine:3.21
+        run: echo "Yay!"
