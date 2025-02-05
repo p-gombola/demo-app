@@ -8,6 +8,6 @@ on:
 jobs: 
   deploy:
     environment: secret-env
-    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@env-secret-bug
+    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@env-secret-bug-2
     secrets:
       top_secret: ${{ secrets.fromEnv }}
