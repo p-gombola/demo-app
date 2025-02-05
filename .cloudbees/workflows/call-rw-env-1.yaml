@@ -17,6 +17,6 @@ jobs:
           [ "${{ secrets.top_secret }}" = "secretFromEnv" ]
 
   call-rw-2:
-    uses: p-gombola/shared/.cloudbees/workflows/call-rw-env-2.yaml@main
+    uses: p-gombola/demo-app/.cloudbees/workflows/call-rw-env-2.yaml@main
     secrets:
       top_secret_2: ${{ secrets.top_secret }}
