@@ -7,24 +7,7 @@ on:
 
 jobs: 
   deploy:
-    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@v2
-    with:
-      config-path: ./config/demo-app
+    environment: secret-env
+    uses: p-gombola/shared/.cloudbees/workflows/deploy.yaml@env-secret-bug
     secrets:
-      access-token: ${{ secrets.token }}
-  
-  pass:
-    needs: [deploy]
-    if: needs.deploy.outputs.deploy-result == 'pass'
-    steps:
-      - name: Pass
-        uses: docker://alpine:3.21
-        run: echo "Deploy success alert"
-
-  fail:
-    needs: [deploy]
-    if: needs.deploy.outputs.deploy-result == 'fail'
-    steps:
-      - name: Handle deploy failure
-        uses: docker://alpine:3.21
-        run: echo "Deploy failure alert"
+      top_secret: ${{ secrets.fromEnv }}
