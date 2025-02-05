@@ -7,7 +7,6 @@ on:
 
 jobs: 
   deploy:
-    environment: secret-env
     uses: p-gombola/demo-app/.cloudbees/workflows/call-rw-env-1.yaml@main
     secrets:
-      top_secret: ${{ secrets.fromEnv }}
+      top_secret: secretFromConstant
