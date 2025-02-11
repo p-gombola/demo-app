@@ -9,12 +9,6 @@ on:
         required: true
 
 jobs:
-  inner-1:
-    steps:
-      - name: test secret value
-        uses: docker://alpine:3.21
-        run: |
-          [ "${{ secrets.top_secret }}" = "secretFromEnv" ]
 
   call-rw-2:
     uses: p-gombola/demo-app/.cloudbees/workflows/call-rw-env-2.yaml@main
