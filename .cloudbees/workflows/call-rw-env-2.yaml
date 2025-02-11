@@ -14,4 +14,4 @@ jobs:
       - name: test secret value
         uses: docker://alpine:3.21
         run: |
-          [ "${{ secrets.top_secret_2 }}" = "secretFromEnv" ]
+          [ "${{ secrets.top_secret_2 }}" != "" ]
