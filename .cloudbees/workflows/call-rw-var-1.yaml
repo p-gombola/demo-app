@@ -1,0 +1,17 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: call-rw-var-1
+
+on: 
+  workflow_call:
+    inputs:
+      var_1:
+        type: number
+        required: true
+
+jobs:
+
+  call-rw-2:
+    uses: p-gombola/demo-app/.cloudbees/workflows/call-rw-var-2.yaml@main
+    with:
+      var_2: ${{ inputs.env_1 }}
