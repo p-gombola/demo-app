@@ -1,0 +1,16 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: env-err-1
+
+on: 
+  workflow_call: {}
+
+jobs:
+
+  build:
+    environment: secret-env
+    steps:
+      - name: hello
+        uses: docker://alpine:3.21
+        run: |
+          echo "Hello, World!"
