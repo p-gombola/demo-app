@@ -8,7 +8,7 @@ on:
 jobs:
 
   build:
-    environment: secret-env
+    environment: does-not-exist
     steps:
       - name: hello
         uses: docker://alpine:3.21
