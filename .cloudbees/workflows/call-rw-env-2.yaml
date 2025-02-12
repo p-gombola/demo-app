@@ -15,4 +15,4 @@ jobs:
         uses: docker://alpine:3.21
         run: |
           [ "${{ secrets.top_secret_2 }}" != "" ]
-          echo -n "${{ secrets.top_secret_2 }}"
+          echo -n "${{ secrets.top_secret_2 }}" | wc -c
