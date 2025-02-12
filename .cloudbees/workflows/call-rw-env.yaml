@@ -8,5 +8,6 @@ on:
 jobs: 
   deploy:
     uses: p-gombola/demo-app/.cloudbees/workflows/call-rw-env-1.yaml@main
+    environment: secret-env
     secrets:
-      top_secret: ${{ secrets.noPwd }}
+      top_secret: ${{ secrets.pwd }}
