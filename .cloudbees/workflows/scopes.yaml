@@ -5,7 +5,7 @@ name: scopes
 on:
   push:
     branches:
-      - "scopes"
+      - "scopes-branch"
     tags:
       - "scopes"
 
