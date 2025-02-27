@@ -1,0 +1,23 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: env-approval 
+
+on:
+  workflow_dispatch:
+
+jobs: 
+  build:
+    environment: needs-approval
+    steps:
+      - name: build
+        uses: docker://alpine:3.21
+        run: |
+          echo "Hello Build!"
+
+  deploy:
+    environment: needs-approval
+    steps:
+      - name: deploy
+        uses: docker://alpine:3.21
+        run: |
+          echo "Hello Deploy!"
