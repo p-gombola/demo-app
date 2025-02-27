@@ -12,3 +12,6 @@ jobs:
         uses: docker://alpine:3.21
         run: |
           echo "cloudbees.scm.ref: ${{ cloudbees.scm.ref }}"
+          echo "cloudbees.scm.repositoryUrl: ${{ cloudbees.scm.repositoryUrl }}"
+          echo "cloudbees.scm.repository: ${{ cloudbees.scm.repository }}"
+          echo "cloudbees.scm.branch: ${{ cloudbees.scm.branch }}"
