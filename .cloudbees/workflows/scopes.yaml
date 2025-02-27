@@ -4,6 +4,8 @@ name: scopes
 
 on:
   push:
+    branches:
+      - "scopes"
     tags:
       - "scopes"
 
