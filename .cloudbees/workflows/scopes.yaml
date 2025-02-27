@@ -3,6 +3,10 @@ kind: workflow
 name: scopes
 
 on:
+  push:
+    tags:
+      - "scopes"
+
   workflow_dispatch:
 
 jobs: 
