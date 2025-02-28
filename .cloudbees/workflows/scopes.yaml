@@ -10,10 +10,8 @@ on:
       - "scopes"
 
   workflow_dispatch:
-
 env:
   print: "false"
-
 jobs: 
   scm:
     if: env.print == 'true'
