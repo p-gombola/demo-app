@@ -12,11 +12,11 @@ on:
   workflow_dispatch:
 
 env:
-  print: true
+  print: 'true'
 
 jobs: 
   scm:
-    if: env.print
+    if: env.print == 'true'
     steps:
       - name: print
         uses: docker://alpine:3.21
