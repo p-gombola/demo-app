@@ -16,7 +16,7 @@ env:
 
 jobs: 
   scm:
-    if: $print
+    if: env.print
     steps:
       - name: print
         uses: docker://alpine:3.21
