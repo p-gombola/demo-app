@@ -11,8 +11,12 @@ on:
 
   workflow_dispatch:
 
+env:
+  print: true
+
 jobs: 
   scm:
+    if: "$print"
     steps:
       - name: print
         uses: docker://alpine:3.21
@@ -21,3 +25,4 @@ jobs:
           echo "cloudbees.scm.repositoryUrl: ${{ cloudbees.scm.repositoryUrl }}"
           echo "cloudbees.scm.repository: ${{ cloudbees.scm.repository }}"
           echo "cloudbees.scm.branch: ${{ cloudbees.scm.branch }}"
+          echo "print: $print"
