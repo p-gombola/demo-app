@@ -11,7 +11,7 @@ on:
 
   workflow_dispatch:
 env:
-  print: "false"
+  print: "true"
 jobs: 
   scm:
     if: env.print == 'true'
