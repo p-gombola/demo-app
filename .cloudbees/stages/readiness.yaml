@@ -1,0 +1,29 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: release-readiness
+
+on: 
+  workflow_call:
+
+jobs:
+  gather-evidence:
+    steps:
+      - name: Get jira tickets
+        uses: docker://alpine:3.21
+        run: echo "Retrieving jira tickets"
+      - name: Get frontend changelogs
+        uses: docker://alpine:3.21
+        run: echo "Retrieving changelogs for UI"
+      - name: Get backend changelogs
+        uses: docker://alpine:3.21
+        run: echo "Retrieving changelogs for BE"
+
+  quality-checks:
+    needs: [gather-evidence]
+    steps:
+      - name: Code quality and security scan
+        uses: docker://alpine:3.21
+        run: echo "Code is high quality and security is top notch"
+      - name: Image security scan
+        uses: docker://alpine:3.21
+        run: echo "Image is impeccable"

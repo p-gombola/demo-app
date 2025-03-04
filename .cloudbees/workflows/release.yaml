@@ -1,0 +1,11 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: release-v1.0.0
+
+on:
+  workflow_dispatch:
+
+jobs: 
+  release-readiness:
+    uses: p-gombola/demo-app/.cloudbees/stages/readiness.yaml
+  
