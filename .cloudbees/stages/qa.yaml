@@ -1,0 +1,28 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: quality assurance
+
+on: 
+  workflow_call:
+
+jobs:
+  deploy-qa-environmet:
+    steps:
+      - name: deploy
+        uses: docker://alpine:3.21
+        run: echo "Deploying to QA environment"
+  
+  enable-feature-flag:
+    needs: [deploy-qa-environment]
+    steps:
+      - name: flag enablement
+        uses: docker://alpine:3.21
+        run: echo "Enabling feature flag in QA environment"
+      
+  functional-test:
+    needs: [enable-feature-flag]
+    steps:
+      - name: run tests
+        uses: docker://alpine:3.21
+        run: echo "Running functional tests"
+  

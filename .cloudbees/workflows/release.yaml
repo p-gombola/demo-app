@@ -9,3 +9,6 @@ jobs:
   release-readiness:
     uses: p-gombola/demo-app/.cloudbees/stages/readiness.yaml
   
+  quality-assurance:
+    needs: [release-readiness]
+    uses: p-gombola/demo-app/.cloudbees/stages/qa.yaml
