@@ -6,7 +6,7 @@ on:
   workflow_call:
 
 jobs:
-  deploy-qa-environmet:
+  deploy-qa-environment:
     steps:
       - name: deploy
         uses: docker://alpine:3.21
