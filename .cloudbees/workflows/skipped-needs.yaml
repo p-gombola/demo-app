@@ -8,22 +8,21 @@ jobs:
     if: ${{ false }}
     steps:
       - name: Say hello
-        id: hello
         run: |
-          echo "hello world" > $CLOUDBEES_OUTPUTS/greeting
+          echo "hello world"
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
     outputs:
-      out: ${{steps.hello.outputs.greeting}}
+      out: "1"
   job1:
     steps:
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          echo "${{needs.job0.outputs.out}}"
+          echo "hello world"
     needs:
-      - job0
+      - approve
   approve:
     needs: job0
     if: ${{ false }}
