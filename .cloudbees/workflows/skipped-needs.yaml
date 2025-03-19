@@ -20,9 +20,9 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          echo "hello world"
+          echo "${{needs.job0.outputs.out}}"
     needs:
-      - approve
+      - job0
   approve:
     needs: job0
     if: ${{ false }}
