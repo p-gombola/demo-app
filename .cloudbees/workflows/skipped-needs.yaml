@@ -21,7 +21,7 @@ jobs:
         shell: sh
         run: |
           echo "hello world"
-          echo "this is the output: ${{needs.approve.outputs.dynamic_output}}"
+          echo "this is the output: ${{needs.approve.outputs.comments}}"
     needs:
       - approve
   approve:
