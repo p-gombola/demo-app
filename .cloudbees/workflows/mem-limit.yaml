@@ -1,0 +1,24 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Test Memory Limit
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  exceed-memory-limit:
+    steps:
+      - name: Exceed memory limit
+        uses: docker://alpine:3.21
+        run: |
+          echo "Free memory: $(expr $(cat /proc/meminfo | awk '/MemFree/{printf "%d\n", $2 * 0.9;}') / 1024 / 1024)GiB"
+          echo
+          echo Generating 1GiB file ...
+          cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c $(expr 1024 \* 1024 \* 1024) > file
+          VAR=
+          SIZE=0
+          for IDX in $(seq 1 15); do
+            SIZE=$(expr $SIZE + 1)
+            echo Loading generated file into memory ${SIZE}x ...
+            VAR="$VAR$(cat file))"
+          done
