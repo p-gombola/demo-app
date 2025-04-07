@@ -13,12 +13,13 @@ jobs:
         uses: cloudbees-io/checkout@v1
 
       - name: golang exceed memory limit
+        if: ${{ false }}
         uses: docker://golang:1.24-alpine3.21
         run: |
           go run main.go
       
       - name: shell exceed memory limit
-        if: ${{ false }}
+        if: ${{ true }}
         uses: docker://alpine:3.21
         run: |
           echo "Free memory: $(expr $(cat /proc/meminfo | awk '/MemFree/{printf "%d\n", $2 * 0.9;}') / 1024 / 1024)GiB"
