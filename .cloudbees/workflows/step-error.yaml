@@ -8,7 +8,7 @@ on:
 jobs:
   err:
     steps:
-      id: create-error
+    - id: create-error
       uses: docker://invalid.image:latest
       run: |
         echo "pull error"
