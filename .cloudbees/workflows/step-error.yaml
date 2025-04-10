@@ -9,5 +9,6 @@ jobs:
   err:
     steps:
       id: create-error
+      uses: docker://invalid.image:latest
       run: |
-        echo "missing uses"
+        echo "pull error"
