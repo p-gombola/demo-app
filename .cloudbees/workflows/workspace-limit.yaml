@@ -1,0 +1,33 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Test Ephemeral Storage Limit
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  exceed-workspace-size-limit:
+      steps:
+        - name: Exceed workspace size limit
+          uses: docker://alpine:3.21
+          run: |
+            set -u
+            mkdir test
+            cd test
+            echo Generating 1GiB file ...
+            cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c $(expr 1024 \* 1024 \* 1024) > file
+            ls -lah file
+            SIZE=1
+            for IDX in $(seq 1 11); do
+              SIZE=$(expr $SIZE + 1)
+              echo Copying generated file to increase workspace size to ${SIZE}GiB ...
+              cp file file-$IDX
+            done
+            echo
+            du -bch
+            echo Step will now sleep to wait for kubelet to kill the job asynchronously.
+            echo '(kubelet checks the file system quota periodically every 60s.)'
+            echo sleeping for 10s...
+            sleep 10
+            echo sleeping for another 90s...
+            sleep 90
