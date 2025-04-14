@@ -17,4 +17,5 @@ jobs:
             cat /etc/passwd
             su rspec
             whoami
+            id
             echo $HOME
