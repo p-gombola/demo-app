@@ -15,6 +15,6 @@ jobs:
             echo $HOME
             useradd -d /cloudbees/home -g root -u 1000 rspec
             cat /etc/passwd
-            su - rpsec
+            su - rspec
             whoami
             echo $HOME
