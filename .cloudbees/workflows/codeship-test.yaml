@@ -1,0 +1,20 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: codeship test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+  steps:
+    - name: Run test pipeline
+      uses: docker://cloudbees/basic-platform:latest
+      run: |
+        whoami
+        echo $HOME
+        useradd -d /cloudbees/home -g root -u 1000 rspec
+        cat /etc/passwd
+        su - rpsec
+        whoami
+        echo $HOME
