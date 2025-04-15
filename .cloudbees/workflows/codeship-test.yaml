@@ -15,7 +15,7 @@ jobs:
             echo $HOME
             useradd -d /cloudbees/home -u 1000 rspec
             cat /etc/passwd
-            su rspec
+            su -c 'echo switched rspec; whoami; echo end rspec' rspec
             whoami
             id
             echo $HOME
