@@ -20,7 +20,6 @@ jobs:
             corepack enable
             corepack prepare yarn@stable --activate
             yarn set version stable
-            yarn install
             export RAILS_ENV=test
             /etc/init.d/redis-server start
             rm config/database.yml
