@@ -11,16 +11,7 @@ jobs:
       - name: Run test pipeline
         uses: docker://cloudbees/basic-platform:latest
         run: |
-            echo "root PATH: $PATH"
-            . /etc/cloudbees.sh
-            if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
-            if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
-            apt-get update
-            apt-get install -y libxml2-dev shared-mime-info libvips42
-            if [ -f .node-version ]; then nvm install $(cat .node-version); else nvm install 16.18.0; fi
-            
+            whoami           
             useradd -d /cloudbees/home -u 1000 rspec
-            echo "root PATH: $PATH"
-            echo "root bundle: $(which bundle)"
-            su -c 'echo "rspec PATH: $PATH"' rspec
-            su -c 'echo "rspec bundle: $(which bundle)"' rspec
+            su rspec
+            whoami
