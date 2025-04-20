@@ -17,15 +17,6 @@ jobs:
             apt-get update
             apt-get install -y libxml2-dev shared-mime-info libvips42
             if [ -f .node-version ]; then nvm install $(cat .node-version); else nvm install 16.18.0; fi
-            corepack enable
-            corepack prepare yarn@stable --activate
-            yarn set version stable
-            export RAILS_ENV=test
-            /etc/init.d/redis-server start
-            rm config/database.yml
-            cp /etc/database.yml config/database.yml
-            service postgresql start
-            psql -h localhost -c "CREATE DATABASE test;"
             
             useradd -d /cloudbees/home -u 1000 rspec
             echo "root PATH: $PATH"
