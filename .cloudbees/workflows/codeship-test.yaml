@@ -9,11 +9,12 @@ jobs:
   run-tests:
     steps:
       - name: Run test pipeline
+        env:
+          GEM_HOME: "/home/rpsec/.gem"
         uses: docker://cloudbees/basic-platform:pr-image-rspec
         run: |
             . /etc/cloudbees.sh
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
-            EXPORT GEM_HOME="$HOME/.gem"
             if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
             apt-get update
             apt-get install -y libxml2-dev shared-mime-info libvips42
