@@ -7,13 +7,14 @@ on:
 
 jobs:
   run-tests:
+    services:
+      postgres:
+        image: postgres:16.8-alpine3.21
     steps:
       - name: Run test pipeline
         uses: docker://cloudbees/basic-platform:pr-image-rspec
         run: |
-            . /etc/cloudbees.sh
-            if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
-            if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else export GEM_HOME="$HOME/.gem" gem install bundler; fi
-            sudo apt-get update
-            sudo apt-get install -y libxml2-dev shared-mime-info libvips42
-            if [ -f .node-version ]; then nvm install $(cat .node-version); else nvm install 16.18.0; fi
+            until pg_isready; do
+              echo "Waiting for database connection..."
+              sleep 2
+            done
