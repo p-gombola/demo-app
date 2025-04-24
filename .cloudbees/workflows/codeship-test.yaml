@@ -9,7 +9,7 @@ jobs:
   run-tests:
     steps:
       - name: Run test pipeline
-        uses: docker://cloudbees/basic-platform:latest
+        uses: docker://cloudbees/basic-platform:pr-image-rspec
         run: |
             . /etc/cloudbees.sh
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
@@ -17,13 +17,3 @@ jobs:
             apt-get update
             apt-get install -y libxml2-dev shared-mime-info libvips42
             if [ -f .node-version ]; then nvm install $(cat .node-version); else nvm install 16.18.0; fi
-            
-            whoami
-            useradd -d /cloudbees/home -u 1000 rspec
-            su - rspec
-            whoami
-
-            echo "root PATH: $PATH"
-            echo "root bundle: $(which bundle)"
-            su -c 'echo "rspec PATH: $PATH"' rspec
-            su -c 'echo "rspec bundle: $(which bundle)"' rspec
