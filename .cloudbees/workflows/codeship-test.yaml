@@ -13,6 +13,7 @@ jobs:
         run: |
             . /etc/cloudbees.sh
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
+            EXPORT GEM_HOME="$HOME/.gem"
             if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
             apt-get update
             apt-get install -y libxml2-dev shared-mime-info libvips42
