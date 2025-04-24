@@ -14,6 +14,6 @@ jobs:
             . /etc/cloudbees.sh
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
             if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else export GEM_HOME="$HOME/.gem" gem install bundler; fi
-            apt-get update
-            apt-get install -y libxml2-dev shared-mime-info libvips42
+            sudo apt-get update
+            sudo apt-get install -y libxml2-dev shared-mime-info libvips42
             if [ -f .node-version ]; then nvm install $(cat .node-version); else nvm install 16.18.0; fi
