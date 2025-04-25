@@ -27,3 +27,5 @@ jobs:
               echo "Waiting for redis connection..."
               sleep 2
             done
+            
+            echo "Postgres and Redis started"
