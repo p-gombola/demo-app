@@ -27,5 +27,9 @@ jobs:
               echo "Waiting for redis connection..."
               sleep 2
             done
-            
+
             echo "Postgres and Redis started"
+
+             . /etc/cloudbees.sh
+            if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
+            if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
