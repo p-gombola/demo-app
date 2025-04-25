@@ -22,7 +22,8 @@ jobs:
         shell: bash
         run: |-
             . /etc/cloudbees.sh
-            export GEM_HOME=$(pwd)
+            export GEM_HOME=$(pwd)/gems
+            export NVM_DIR=$(pwd)/nvm
 
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
             if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
