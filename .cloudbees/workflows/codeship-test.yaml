@@ -18,15 +18,9 @@ jobs:
       - name: Run test pipeline
         uses: docker://cloudbees/basic-platform:0.0.271-rspec
         run: |
-            whoami
-            pwd
-            echo "GEM_HOME: $GEM_HOME"
-
-            echo "GEM_HOME=$GEM_HOME" >> ~/.bashrc
-
             . /etc/cloudbees.sh
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
-            if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
+            if [ -f .bundler-version ]; then gem install bundler --user-install -v $(cat .bundler-version); else gem install bundler --user-install; fi
 
             until pg_isready -h 127.0.0.1 -q; do
               echo "Waiting for database connection..."
