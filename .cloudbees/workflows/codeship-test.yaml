@@ -16,4 +16,7 @@ jobs:
       - name: Run test pipeline
         uses: docker://cloudbees/basic-platform:pr-image-rspec
         run: |
-            echo `pg_isready`
+            until pg_isready; do
+              echo "Waiting for database connection..."
+              sleep 2
+            done
