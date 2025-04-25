@@ -19,8 +19,12 @@ jobs:
         uses: docker://cloudbees/basic-platform:0.0.271-rspec
         run: |
             . /etc/cloudbees.sh
+            echo $GEM_HOME
+            export GEM_HOME=$(pwd)
+            echo $GEM_HOME
+
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
-            if [ -f .bundler-version ]; then gem install bundler --user-install -v $(cat .bundler-version); else gem install bundler --user-install; fi
+            if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
 
             until pg_isready -h 127.0.0.1 -q; do
               echo "Waiting for database connection..."
