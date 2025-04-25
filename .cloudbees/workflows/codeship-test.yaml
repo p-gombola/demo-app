@@ -12,6 +12,8 @@ jobs:
         image: postgres:16.8-alpine3.21
         env:
           POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
       redis:
         image: redis:7.4.2-alpine3.21
     steps:
