@@ -22,3 +22,8 @@ jobs:
               echo "Waiting for database connection..."
               sleep 2
             done
+
+            until redis-cli -h 127.0.0.1; do
+              echo "Waiting for redis connection..."
+              sleep 2
+            done
