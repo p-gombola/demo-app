@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-rspec-2:
+  test-rspec:
     services:
       postgres:
         image: postgres:16.8-alpine3.21
