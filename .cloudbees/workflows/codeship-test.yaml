@@ -30,6 +30,9 @@ jobs:
 
             echo "Postgres and Redis started"
 
+            whoami
+            pwd
+
              . /etc/cloudbees.sh
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
             if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
