@@ -32,6 +32,7 @@ jobs:
 
             whoami
             pwd
+            echo "GEM_HOME: $GEM_HOME"
 
              . /etc/cloudbees.sh
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
