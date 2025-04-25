@@ -16,8 +16,16 @@ jobs:
         image: redis:7.4.2-alpine3.21
     steps:
       - name: Run test pipeline
-        uses: docker://cloudbees/basic-platform:pr-image-rspec
+        uses: docker://cloudbees/basic-platform:0.0.271-rspec
         run: |
+            whoami
+            pwd
+            echo "GEM_HOME: $GEM_HOME"
+
+            . /etc/cloudbees.sh
+            if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
+            if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
+
             until pg_isready -h 127.0.0.1 -q; do
               echo "Waiting for database connection..."
               sleep 2
@@ -27,13 +35,3 @@ jobs:
               echo "Waiting for redis connection..."
               sleep 2
             done
-
-            echo "Postgres and Redis started"
-
-            whoami
-            pwd
-            echo "GEM_HOME: $GEM_HOME"
-
-             . /etc/cloudbees.sh
-            if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
-            if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
