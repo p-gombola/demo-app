@@ -10,11 +10,10 @@ jobs:
     services:
       postgres:
         image: postgres:16.8-alpine3.21
+        env:
+          POSTGRES_HOST_AUTH_METHOD=trust
     steps:
       - name: Run test pipeline
         uses: docker://cloudbees/basic-platform:pr-image-rspec
         run: |
-            until pg_isready; do
-              echo "Waiting for database connection..."
-              sleep 2
-            done
+            echo `pg_isready`
