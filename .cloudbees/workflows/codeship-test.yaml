@@ -23,22 +23,12 @@ jobs:
         run: |-
             . /etc/cloudbees.sh
 
-            echo "--before rvm use--"
-            echo "GEM_HOME: $GEM_HOME"
-            echo "GEM_PATH: $GEM_PATH"
-            echo "PATH: $PATH"
-
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
 
             export GEM_HOME=$(pwd)/gems
             export GEM_PATH="$GEM_HOME:$GEM_PATH"
             export PATH="$GEM_HOME/bin:$PATH"
             export NVM_DIR=$(pwd)/nvm
-
-            echo "--after rvm use--"
-            echo "GEM_HOME: $GEM_HOME"
-            echo "GEM_PATH: $GEM_PATH"
-            echo "PATH: $PATH"
 
             if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
             bundle install
