@@ -24,7 +24,7 @@ jobs:
             . /etc/cloudbees.sh
             export GEM_HOME=$(pwd)/gems
             export NVM_DIR=$(pwd)/nvm
-            echo $PATH
+            export PATH="$GEM_HOME/bin:$PATH"
 
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
             if [ -f .bundler-version ]; then gem install bundler -v $(cat .bundler-version); else gem install bundler; fi
