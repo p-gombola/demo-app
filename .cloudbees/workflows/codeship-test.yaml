@@ -24,8 +24,6 @@ jobs:
             . /etc/cloudbees.sh
             export GEM_HOME=$(pwd)/gems
             export NVM_DIR=$(pwd)/nvm
-            export PATH="$GEM_HOME/bin:$PATH"
-
             echo $PATH
 
             if [ -f .ruby-version ]; then rvm use $(cat .ruby-version) --install; fi
