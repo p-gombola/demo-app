@@ -18,7 +18,7 @@ jobs:
           cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c $(expr 1024 \* 1024 \* 1024) > file
           ls -lah file
           SIZE=1
-          for IDX in $(seq 1 3); do
+          for IDX in $(seq 1 14); do
             SIZE=$(expr $SIZE + 1)
             echo Copying generated file to increase workspace size to ${SIZE}GiB ...
             cp file $(workspaces.default.path)/file-$IDX
