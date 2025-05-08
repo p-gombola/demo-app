@@ -12,8 +12,14 @@ jobs:
         name: Get source code
         uses: cloudbees-io/checkout@v1
 
+      - name: test exit code
+        uses: docker://alpine:3.21
+        run: |
+          echo "exiting with code 137"
+          exit 137
+
       - name: golang exceed memory limit
-        if: ${{ true }}
+        if: ${{ false }}
         uses: docker://golang:1.24-alpine3.21
         run: |
           go run main.go
