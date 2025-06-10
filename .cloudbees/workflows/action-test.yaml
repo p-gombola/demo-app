@@ -14,5 +14,5 @@ jobs:
       - name: configure-eks
         uses: cloudbees-io/configure-eks-credentials@v1
         with:
-          name: ${{ vars.staging_east_cluster_name }}
+          name: 'nonexistent'
 
