@@ -12,7 +12,7 @@ jobs:
         run: echo ""
 
       - name: configure-eks
-        cloudbees-io/configure-eks-credentials@v1
+        uses: cloudbees-io/configure-eks-credentials@v1
         with:
           name: ${{ vars.staging_east_cluster_name }}
 
