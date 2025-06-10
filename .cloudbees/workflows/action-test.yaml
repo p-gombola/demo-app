@@ -10,3 +10,9 @@ jobs:
       - name: no-op
         uses: docker://alpine:3.21
         run: echo ""
+
+      - name: configure-eks
+        cloudbees-io/configure-eks-credentials@v1
+        with:
+          name: ${{ vars.staging_east_cluster_name }}
+
