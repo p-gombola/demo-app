@@ -12,7 +12,7 @@ jobs:
         run: echo ""
 
       - name: configure-eks
-        uses: cloudbees-io/configure-eks-credentials@v1
+        uses: cloudbees-io/configure-eks-credentials@19edc03f8648cbf2215b5fc49a991a4bea60c0b2
         with:
           name: 'nonexistent'
 
