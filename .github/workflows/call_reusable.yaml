@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-reusable:
-    env:
-      CALL_JOB_VAR: "CALLENV"
     uses: ./.github/workflows/reusable.yaml
     secrets: inherit
+    env:
+      CALL_JOB_VAR: "CALLENV"
