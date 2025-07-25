@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-reusable:
+    env:
+      rw-job-env: "This is a reusable job environment variable"
     uses: ./.github/workflows/reusable.yaml
     secrets: inherit
-    # env:
-    #   rw-job-secret: ${{ secrets.secret1 }}

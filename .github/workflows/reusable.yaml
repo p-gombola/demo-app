@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: Print env var
         run: |
-          echo "Env var: ${{ env.rw-job-secret }}"
+          echo "Env var: ${{ env.rw-job-env }}"
