@@ -7,7 +7,7 @@ on:
 
 jobs:
   reusable-workflow-with-dynamic-environment:
-    uses: p-gombola/demo-app/.workflows/reusable-with-dynamic-environment.yaml
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
     secrets: inherit
     vars: inherit
     with:
