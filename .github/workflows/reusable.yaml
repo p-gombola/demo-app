@@ -5,8 +5,8 @@ on:
 
 jobs:
   run-script:
-  env:
-    RW_JOB_ENV: "ENV1"
+    env:
+      RW_JOB_ENV: "ENV1"
     runs-on: ubuntu-latest
     steps:
       - name: Print env var
