@@ -6,14 +6,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  reusable-with-dynamic-environment:
+  rw-dynamic-env:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
     secrets: inherit
     vars: inherit
     with:
       environment: pg-prod
 
-  reusable-with-dynamic-environment-mapped-secrets:
+  rw-dynamic-env-mapped-secrets:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-env-secrets-mapping.yaml
     secrets:
       env_only_secret_prop: "override env secret from mapping"
