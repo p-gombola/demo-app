@@ -6,7 +6,6 @@ on:
   workflow_call: {}
 
 jobs:
-
   rw-job-1:
     uses: docker://alpine:3.21
     steps:
