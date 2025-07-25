@@ -6,9 +6,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  reusable-workflow-with-dynamic-environment:
+  reusable-with-dynamic-environment:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
     secrets: inherit
+    vars: inherit
+    with:
+      environment: pg-prod
+
+  reusable-with-dynamic-environment-mapped-secrets:
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-env-secrets-mapping.yaml
+    secrets:
+      env_only_secret_prop: "override env secret from mapping"
+      secret1: ${{ secrets.secret1 }}
     vars: inherit
     with:
       environment: pg-prod
