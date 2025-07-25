@@ -7,8 +7,8 @@ on:
 
 jobs:
   rw-job-1:
-    uses: docker://alpine:3.21
     steps:
       - name: print-var
+        uses: docker://alpine:3.21
         run: |
           echo "hello rw-job-1 with caller env: ${{ env.rw_job_env }}"

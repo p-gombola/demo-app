@@ -8,3 +8,5 @@ on:
 jobs:
   call-rw-envvar:
     uses: p-gombola/demo-app/.cloudbees/workflows/rw-envvar.yaml@main
+    env:
+      rw_job_env: "FROM_CALLER"
