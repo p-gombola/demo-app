@@ -1,0 +1,12 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print env var
+        run: |
+          echo "Env var: ${{ env.rw-job-secret }}"
