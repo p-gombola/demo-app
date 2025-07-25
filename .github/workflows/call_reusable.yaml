@@ -5,5 +5,7 @@ on:
 
 jobs:
   call-reusable:
+    env:
+      RW_JOB_ENV: "This is an environment variable from the caller workflow"
     uses: ./.github/workflows/reusable.yaml
     secrets: inherit
