@@ -21,3 +21,8 @@ jobs:
     vars: inherit
     with:
       environment: pg-prod
+
+  rw-mapped-undeclared-secret:
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-undeclared-secret.yaml
+    secrets:
+      mysecret: ${{ secrets.secret1 }}
