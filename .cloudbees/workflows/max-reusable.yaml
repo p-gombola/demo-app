@@ -13,6 +13,11 @@ jobs:
     with:
       environment: pg-prod
 
+  rw-mapped-secrets:
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-secrets-mapping.yaml
+    secrets:
+      super_secret: ${{ secrets.secret1 }}
+      
   rw-dynamic-env-mapped-secrets:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-env-secrets-mapping.yaml
     secrets:
@@ -26,3 +31,8 @@ jobs:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-undeclared-secret.yaml
     secrets:
       mysecret: ${{ secrets.secret1 }}
+  
+  rw-using-global-secrets:
+    uses: p-gombola/dmeo-app/.cloudbees/workflows/reusable-using-global-secrets.yaml
+    secrets: inherit
+    vars: inherit
