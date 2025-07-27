@@ -33,6 +33,6 @@ jobs:
       mysecret: ${{ secrets.secret1 }}
   
   rw-using-global-secrets:
-    uses: p-gombola/dmeo-app/.cloudbees/workflows/reusable-using-global-secrets.yaml
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-using-global-secrets.yaml
     secrets: inherit
     vars: inherit
