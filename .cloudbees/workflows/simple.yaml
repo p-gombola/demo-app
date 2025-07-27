@@ -1,0 +1,13 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: simple
+
+on:
+  workflow_dispatch:
+
+jobs:
+  print:
+    steps:
+      - name: Hello world
+        uses: docker://alpine:3.21
+        run: echo "Just dropped in to say hello!"
