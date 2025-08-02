@@ -1,0 +1,18 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: reusable-with-env
+
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        type: string
+        required: true
+
+jobs:
+  use-env-var:
+    steps:
+      - uses: docker://alpine:3.21
+        run: |
+          set -x
+          [ '${{ inputs.app_name }}' = 'demo-app' ]
