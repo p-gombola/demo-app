@@ -4,6 +4,10 @@ name: max-reusable
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        type: string
+        required: true
 
 jobs:
   rw-dynamic-env:
@@ -11,7 +15,7 @@ jobs:
     secrets: inherit
     vars: inherit
     with:
-      environment: pg-prod
+      environment: ${{ inputs.environment }}
 
   rw-mapped-secrets:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-secrets-mapping.yaml
