@@ -17,4 +17,4 @@ jobs:
           set -x
           [ '${{ inputs.app_name }}' = 'demo-app' ]
           echo "app_name from env-var: $APP_NAME"
-          echo 'app_name from context: ${{ env.APP_NAME}}
+          # echo 'app_name from context: ${{ env.APP_NAME}}
