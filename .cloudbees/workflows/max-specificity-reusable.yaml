@@ -10,12 +10,12 @@ on:
         required: true
 
 jobs:
-  # rw-dynamic-env-input:
-  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
-  #   secrets: inherit
-  #   vars: inherit
-  #   with:
-  #     environment: ${{ inputs.environment }}
+  rw-dynamic-env-input:
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
+    secrets: inherit
+    vars: inherit
+    with:
+      environment: ${{ inputs.environment }}
 
   rw-dynamic-env-var-input:
     env:
