@@ -22,7 +22,7 @@ jobs:
       JOB_VAR: pg-prod
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
     with:
-      environment: pg-prod
+      environment: ${{ env.JOB_VAR }}
 
   # rw-env-from-needs:
   #   outputs:
@@ -68,4 +68,4 @@ jobs:
       APP_NAME: "demo-app"
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-using-env-var.yaml
     with:
-      app_name: ${{ env.APP_NAME}}
+      app_name: ${{ env.APP_NAME }}
