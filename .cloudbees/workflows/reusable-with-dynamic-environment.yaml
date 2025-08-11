@@ -11,7 +11,7 @@ on:
 
 jobs:
   use-environment:
-    environment: ${{ inputs.environment }}
+    environment: pg-prod
     steps:
       - uses: docker://alpine:3.21
         run: |
