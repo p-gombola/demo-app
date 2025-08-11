@@ -10,12 +10,34 @@ on:
         required: true
 
 jobs:
-  # rw-dynamic-env:
+  # rw-dynamic-env-input:
   #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
   #   secrets: inherit
   #   vars: inherit
   #   with:
   #     environment: ${{ inputs.environment }}
+
+  rw-dynamic-env-var:
+    env:
+      JOB_VAR: ${{ inputs.environment }}
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
+    with:
+      environment: ${{ env.JOB_VAR }}
+
+  # rw-env-from-needs:
+  #   outputs:
+  #     environment: ${{ steps.environment.outputs.environment }}
+  #   steps:
+  #     - uses: docker://alpine:3.20
+  #       id: environment
+  #       run: |
+  #         echo -n "${{ inputs.environment }}" > $CLOUDBEES_OUTPUTS/environment
+
+  # rw-dynamic-env-needs:
+  #   needs: [rw-dynamic-env-from-needs]
+  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
+  #   with:
+  #     environment: ${{ needs.rw-dynamic-env-needs.outputs.environment }}
 
   rw-mapped-secrets:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-secrets-mapping.yaml
