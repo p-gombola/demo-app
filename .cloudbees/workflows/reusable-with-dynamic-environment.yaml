@@ -11,12 +11,15 @@ on:
 
 jobs:
   use-environment:
-    environment: pg-prod
+    environment: ${{ inputs.environment }}
     steps:
       - uses: docker://alpine:3.21
         run: |
           set -x
           [ "$ENVSECRET" = 'use me only for prod' ]
           [ '${{ vars.env_only_int_prop }}' = '999' ]
+          [ "$GLOBALSECRET" = 'secretValue1' ]
+          [ '${{ vars.prop1 }}' = 'propValue1' ]
         env:
           ENVSECRET: ${{ secrets.env_only_secret_prop }}
+          GLOBALSECRET: ${{ secrets.secret1 }}
