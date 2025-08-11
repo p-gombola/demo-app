@@ -21,6 +21,8 @@ jobs:
     env:
       JOB_VAR: ${{ inputs.environment}}
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
+    secrets: inherit
+    vars: inherit
     with:
       environment: ${{ env.JOB_VAR }}
 
@@ -36,6 +38,8 @@ jobs:
   rw-dynamic-env-needs:
     needs: [set-env]
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
+    secrets: inherit
+    vars: inherit
     with:
       environment: ${{ needs.set-env.outputs.environment }}
 
