@@ -10,62 +10,62 @@ on:
         required: true
 
 jobs:
-  rw-dynamic-env-input:
-    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
-    secrets: inherit
-    vars: inherit
-    with:
-      environment: ${{ inputs.environment }}
-
-  # rw-dynamic-env-var-input:
-  #   env:
-  #     JOB_VAR: ${{ inputs.environment}}
+  # rw-dynamic-env-input:
   #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
-  #   with:
-  #     environment: ${{ env.JOB_VAR }}
-
-  # set-env:
-  #   outputs:
-  #     environment: ${{ steps.environment.outputs.environment }}
-  #   steps:
-  #     - uses: docker://alpine:3.20
-  #       id: environment
-  #       run: |
-  #         echo -n "${{ inputs.environment }}" > $CLOUDBEES_OUTPUTS/environment
-
-  # rw-dynamic-env-needs:
-  #   needs: [set-env]
-  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
-  #   with:
-  #     environment: ${{ needs.set-env.outputs.environment }}
-
-  # rw-mapped-secrets:
-  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-secrets-mapping.yaml
-  #   secrets:
-  #     super_secret: ${{ secrets.secret1 }}
-
-  # rw-dynamic-env-mapped-secrets:
-  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-env-secrets-mapping.yaml
-  #   secrets:
-  #     env_only_secret_prop2: "override env secret from mapping"
-  #     secret1: ${{ secrets.secret1 }}
-  #   vars: inherit
-  #   with:
-  #     environment: pg-prod
-
-  # rw-mapped-undeclared-secret:
-  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-undeclared-secret.yaml
-  #   secrets:
-  #     mysecret: ${{ secrets.secret1 }}
- 
-  # rw-using-global-secrets:
-  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-using-global-secrets.yaml
   #   secrets: inherit
   #   vars: inherit
-
-  # rw-using-env-var:
-  #   env:
-  #     APP_NAME: "demo-app"
-  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-using-env-var.yaml
   #   with:
-  #     app_name: ${{ env.APP_NAME }}
+  #     environment: ${{ inputs.environment }}
+
+  rw-dynamic-env-var-input:
+    env:
+      JOB_VAR: ${{ inputs.environment}}
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
+    with:
+      environment: ${{ env.JOB_VAR }}
+
+  set-env:
+    outputs:
+      environment: ${{ steps.environment.outputs.environment }}
+    steps:
+      - uses: docker://alpine:3.20
+        id: environment
+        run: |
+          echo -n "${{ inputs.environment }}" > $CLOUDBEES_OUTPUTS/environment
+
+  rw-dynamic-env-needs:
+    needs: [set-env]
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
+    with:
+      environment: ${{ needs.set-env.outputs.environment }}
+
+  rw-mapped-secrets:
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-secrets-mapping.yaml
+    secrets:
+      super_secret: ${{ secrets.secret1 }}
+
+  rw-dynamic-env-mapped-secrets:
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-env-secrets-mapping.yaml
+    secrets:
+      env_only_secret_prop2: "override env secret from mapping"
+      secret1: ${{ secrets.secret1 }}
+    vars: inherit
+    with:
+      environment: pg-prod
+
+  rw-mapped-undeclared-secret:
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-undeclared-secret.yaml
+    secrets:
+      mysecret: ${{ secrets.secret1 }}
+ 
+  rw-using-global-secrets:
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-using-global-secrets.yaml
+    secrets: inherit
+    vars: inherit
+
+  rw-using-env-var:
+    env:
+      APP_NAME: "demo-app"
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-using-env-var.yaml
+    with:
+      app_name: ${{ env.APP_NAME }}
