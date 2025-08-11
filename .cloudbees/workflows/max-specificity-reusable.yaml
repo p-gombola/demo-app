@@ -19,7 +19,7 @@ jobs:
 
   rw-dynamic-env-var:
     env:
-      JOB_VAR: pg-prod
+      JOB_VAR: ${{ inputs.environment}}
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
     with:
       environment: ${{ env.JOB_VAR }}
