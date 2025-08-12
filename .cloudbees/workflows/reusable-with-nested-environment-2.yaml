@@ -1,0 +1,21 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: reusable-with-nested-environment-2
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+
+jobs:
+  use-environment:
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: docker://alpine:3.21
+        run: |
+          set -x
+          [ "$ENVSECRET" = 'use me only for prod' ]
+        env:
+          ENVSECRET: ${{ secrets.env_only_secret_prop }}
