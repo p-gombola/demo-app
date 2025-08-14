@@ -5,13 +5,13 @@ name: reusable-with-dynamic-environment
 on:
   workflow_call:
     inputs:
-      environment2:
+      environment:
         type: string
         required: true
 
 jobs:
   use-environment:
-    environment: ${{ inputs.environment2 }}
+    environment: ${{ inputs.environment }}
     steps:
       - uses: docker://alpine:3.21
         run: |

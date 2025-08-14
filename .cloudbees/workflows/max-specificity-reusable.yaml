@@ -15,7 +15,7 @@ jobs:
     secrets: inherit
     vars: inherit
     with:
-      environment2: ${{ inputs.environment }}
+      environment: ${{ inputs.environment }}
 
   # rw-dynamic-env-var-input:
   #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-nested-environment.yaml
