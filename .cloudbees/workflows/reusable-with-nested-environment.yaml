@@ -20,7 +20,7 @@ jobs:
         env:
           ENVSECRET: ${{ secrets.env_only_secret_prop }}
 
-  call-rw-2:
-    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-nested-environment-2.yaml
-    with:
-      environment: ${{ inputs.environment }}
+  # call-rw-2:
+  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-nested-environment-2.yaml
+  #   with:
+  #     environment: ${{ inputs.environment }}
