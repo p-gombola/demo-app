@@ -11,15 +11,10 @@ on:
 
 jobs:
   use-environment:
-    environment: ${{ inputs.environment }}
     steps:
       - uses: docker://alpine:3.21
         run: |
-          set -x
           echo "environment: ${{ inputs.environment}}"
-          [ "$ENVSECRET" = 'use me only for prod' ]
-        env:
-          ENVSECRET: ${{ secrets.env_only_secret_prop }}
 
   # call-rw-2:
   #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-nested-environment-2.yaml
