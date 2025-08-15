@@ -16,6 +16,7 @@ jobs:
       - uses: docker://alpine:3.21
         run: |
           set -x
+          echo "environment: ${{ inputs.environment}}"
           [ "$ENVSECRET" = 'use me only for prod' ]
         env:
           ENVSECRET: ${{ secrets.env_only_secret_prop }}
