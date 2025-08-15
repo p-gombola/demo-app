@@ -10,26 +10,26 @@ on:
         required: true
 
 jobs:
-  rw-dynamic-env-input:
-    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
-    secrets: inherit
-    vars: inherit
-    with:
-      environment: ${{ inputs.environment }}
+  # rw-dynamic-env-input:
+  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
+  #   secrets: inherit
+  #   vars: inherit
+  #   with:
+  #     environment: ${{ inputs.environment }}
 
   # rw-dynamic-env-var-input:
   #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-nested-environment.yaml
   #   with:
   #     environment: ${{ vars.environment }}
 
-  # rw-dynamic-env-envvar-input:
-  #   env:
-  #     JOB_VAR: ${{ inputs.environment}}
-  #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
-  #   secrets: inherit
-  #   vars: inherit
-  #   with:
-  #     environment2: ${{ env.JOB_VAR }}
+  rw-dynamic-env-envvar-input:
+    env:
+      JOB_VAR: ${{ inputs.environment}}
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml
+    secrets: inherit
+    vars: inherit
+    with:
+      environment: ${{ env.JOB_VAR }}
 
   # set-env:
   #   outputs:
@@ -46,7 +46,7 @@ jobs:
   #   secrets: inherit
   #   vars: inherit
   #   with:
-  #     environment2: ${{ needs.set-env.outputs.environment }}
+  #     environment: ${{ needs.set-env.outputs.environment }}
 
   # rw-mapped-secrets:
   #   uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-secrets-mapping.yaml
