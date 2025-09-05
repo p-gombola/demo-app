@@ -9,6 +9,9 @@ on:
         type: string
         required: true
 
+env:
+  WORFLOW_ENV_VAR: "demo-app"
+
 jobs:
   rw-dynamic-env-input:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-with-dynamic-environment.yaml

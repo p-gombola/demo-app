@@ -16,3 +16,4 @@ jobs:
         run: |
           set -x
           [ '${{ inputs.app_name }}' = 'demo-app' ]
+          echo "WORKFLOW_ENV_VAR is ${{env.WORKFLOW_ENV_VAR}}"
