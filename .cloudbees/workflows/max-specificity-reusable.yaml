@@ -94,3 +94,5 @@ jobs:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-using-output.yaml
     with:
       pass: ${{ needs.create-outputs.outputs.pass }}
+    secrets:
+      pass: ${{ needs.create-outputs.outputs.pass }}
