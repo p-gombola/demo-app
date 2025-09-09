@@ -79,3 +79,18 @@ jobs:
     uses: p-gombola/demo-app/.cloudbees/workflows/reusable-using-env-var.yaml
     with:
       app_name: ${{ env.APP_NAME }}
+
+  create-outputs:
+    outputs:
+      pass: ${{ steps.create-outputs.outputs.pass }}
+    steps:
+      - uses: docker://alpine:3.21
+        id: create-outputs
+        run: |
+          echo -n "superSecret" > $CLOUDBEES_OUTPUTS/pass
+
+  rw-using-output:
+    needs: [create-outputs]
+    uses: p-gombola/demo-app/.cloudbees/workflows/reusable-using-output.yaml
+    with:
+      pass: ${{ needs.create-outputs.outputs.pass }}
